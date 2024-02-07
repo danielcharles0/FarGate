@@ -15,10 +15,12 @@ const InitScreen = ({navigation}) => {
     setChannel(text);
   };
 
-  const done = () => {
+  const done = async () => {
     try {
-      //await AsyncStorage.setItem('botSender', token);
-      //await AsyncStorage.setItem('channelID', channel);
+      await Promise.all([
+        AsyncStorage.setItem('botSender', token),
+        AsyncStorage.setItem('channelID', channel),
+      ]);
     
     } catch (e) {
       console.log("Error while saving in storage:", e)

@@ -39,7 +39,6 @@ const gate = async () => {
       }
     );
 
-    console.log('Message sent:', response.data);
     showMessage({
       message: 'Message sent',
       type: 'info',
@@ -47,7 +46,6 @@ const gate = async () => {
       backgroundColor: 'green'
     });
   } catch (error) {
-    console.error('Error sending message:', error);
     showMessage({
       message: 'Error, try again',
       type: 'info',
@@ -68,7 +66,6 @@ const lights = async () => {
       }
     );
 
-    console.log('Message sent:', response.data);
     showMessage({
       message: 'Message sent',
       type: 'info',
@@ -76,7 +73,6 @@ const lights = async () => {
       backgroundColor: 'green'
     });
   } catch (error) {
-    console.error('Error sending message:', error);
     showMessage({
       message: 'Error, try again',
       type: 'info',
