@@ -24,7 +24,7 @@ const AppNavigator = () => {
           global.botSender = ''
         if (global.channelID == null)
           global.channelID = ''
-
+        
         setDataLoaded(true);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -32,27 +32,25 @@ const AppNavigator = () => {
     };
 
     fetchData();
+
   }, []);
 
-  if(!isDataLoaded){
-    screen='Init';
-  }
-
-  //if both variables empty then InitScreen, i.e. never been in InitScreen or didn't write anything, otherwise CommandsScreen
+  //if both variables empty, i.e. never been in InitScreen or didn't write anything, then InitScreen, otherwise CommandsScreen
   if (global.botSender == '' && global.channelID == '')
     screen = "Init"
   else
     screen = "Commands"
-  
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={screen} 
-        screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Init" component={InitScreen} />
-        <Stack.Screen name="Commands" component={CommandsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+
+  if (isDataLoaded)
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName={screen} 
+          screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Init" component={InitScreen} />
+          <Stack.Screen name="Commands" component={CommandsScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 };
 
 export default AppNavigator;
